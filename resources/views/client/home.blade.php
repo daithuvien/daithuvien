@@ -180,7 +180,7 @@
 						@include('client.partials.hot_courses_right_slide', ['listViewCourses' => $listViewCourses])
 
 						<!-- Widget: Trending News -->
-						<aside class="widget widget--sidebar card widget-tabbed">
+						{{-- <aside class="widget widget--sidebar card widget-tabbed">
 							<div class="widget__title card__header">
 								<h4>Top Theo dõi</h4>
 							</div>
@@ -447,7 +447,7 @@
 
 								</div>
 							</div>
-						</aside>
+						</aside> --}}
 						<!-- Widget: Trending News / End -->
 
 						<!-- Widget: Banner -->

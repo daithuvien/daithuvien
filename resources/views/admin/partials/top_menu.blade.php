@@ -1,7 +1,7 @@
 <nav class="top-nav">
   <ul>
       <li>
-          <a href="javascript:;.html" class="top-menu top-menu--active">
+          <a href="{{ route('dashboard') }}" class="top-menu top-menu--active">
               <div class="top-menu__icon"> <i data-lucide="home"></i> </div>
               <div class="top-menu__title"> Dashboard </div>
           </a>
@@ -14,19 +14,19 @@
           </a>
           <ul class="">
               <li>
-                  <a href="side-menu-light-dashboard-overview-1.html" class="top-menu">
+                  <a href="{{ route('roles.index') }}" class="top-menu">
                       <div class="top-menu__icon"> <i data-lucide="activity"></i> </div>
                       <div class="top-menu__title"> Roles </div>
                   </a>
               </li>
               <li>
-                  <a href="simple-menu-light-dashboard-overview-1.html" class="top-menu">
+                  <a href="{{ route('users.index') }}" class="top-menu">
                       <div class="top-menu__icon"> <i data-lucide="activity"></i> </div>
                       <div class="top-menu__title"> Users </div>
                   </a>
               </li>
               <li>
-                  <a href="top-menu-light-dashboard-overview-1.html" class="top-menu">
+                  <a href="{{ route('data.index') }}" class="top-menu">
                       <div class="top-menu__icon"> <i data-lucide="activity"></i> </div>
                       <div class="top-menu__title"> Data </div>
                   </a>
@@ -40,7 +40,7 @@
           </a>
           <ul class="">
               <li>
-                  <a href="javascript:;" class="top-menu">
+                  <a href="{{ route('courses.index') }}" class="top-menu">
                       <div class="top-menu__icon"> <i data-lucide="activity"></i> </div>
                       <div class="top-menu__title"> Danh Sách </div>
                   </a>                  

@@ -1,5 +1,5 @@
 <aside class="widget widget--sidebar widget-social">
-  <a href="#" class="btn-social-counter btn-social-counter--fb" target="_blank">
+  <a href="https://www.facebook.com/daithuvien" class="btn-social-counter btn-social-counter--fb" target="_blank">
     <div class="btn-social-counter__icon">
       <i class="fab fa-facebook"></i>
     </div>

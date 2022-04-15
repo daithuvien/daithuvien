@@ -103,13 +103,13 @@
                         <li class="nav-item">
                           <a class="nav-link @if($key==0)active @endif" href="#dl{{ $key+1 }}" role="tab" data-toggle="tab">
                             @if(strtolower($provider->provider_name) == "fshare")
-                              <span class="d-none d-sm-block"><img src="{{ asset('client/images/icon-fshare.png') }}" style="width: 20px;height: 20px;">  {{ $provider->provider_name }}</span>
+                              <span class="d-sm-block"><img src="{{ asset('client/images/icon-fshare.png') }}" style="width: 20px;height: 20px;">  <span class="d-none d-sm-block" style="padding-top: 5px;">{{ $provider->provider_name }}</span></span>
                             @elseif(strtolower($provider->provider_name) == "gdrive")
-                              <span class="d-none d-sm-block"><img src="{{ asset('client/images/icon-gdrive.svg') }}" style="width: 20px;height: 20px;">  {{ $provider->provider_name }}</span>
+                              <span class="d-sm-block"><img src="{{ asset('client/images/icon-gdrive.svg') }}" style="width: 20px;height: 20px;">  <span class="d-none d-sm-block" style="padding-top: 5px;">{{ $provider->provider_name }}</span></span>
                             @elseif(strtolower($provider->provider_name) == "rapidgator")
-                              <span class="d-none d-sm-block"><img src="{{ asset('client/images/icon.webp') }}" style="width: 20px;height: 20px;">  {{ $provider->provider_name }}</span>
+                              <span class="d-sm-block"><img src="{{ asset('client/images/icon.webp') }}" style="width: 20px;height: 20px;">  <span class="d-none d-sm-block" style="padding-top: 5px;">{{ $provider->provider_name }}</span></span>
                             @elseif(strtolower($provider->provider_name) == "nitroflare")
-                              <span class="d-none d-sm-block"><img src="{{ asset('client/images/icon-nitroflare.png') }}" style="width: 20px;height: 20px;">  {{ $provider->provider_name }}</span>
+                              <span class="d-sm-block"><img src="{{ asset('client/images/icon-nitroflare.png') }}" style="width: 20px;height: 20px;">  <span class="d-none d-sm-block" style="padding-top: 5px;">{{ $provider->provider_name }}</span></span>
                             @endif
                             
                           </a>

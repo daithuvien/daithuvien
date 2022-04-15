@@ -15,6 +15,7 @@ use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\Auth\LoginController;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,7 +27,17 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Auth::routes();
+Route::get('/xac-nhan', [HomeController::class, 'confirmRegister'])->name('register.confirm');
+Auth::routes(['verify' => true]);
+
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+    return redirect('/');
+})->middleware(['auth', 'signed'])->name('verification.verify');
 
 Route::group(['prefix' => 'management', 'middleware' => ['isAdmin']], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');

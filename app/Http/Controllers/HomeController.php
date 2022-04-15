@@ -23,4 +23,8 @@ class HomeController extends Controller
         $listQuotes = []; //(new Quote)->listQuotesWithPagination(4);
         return view('client.home', compact(['footerText','footerYear','newsArticles', 'listHotCourses', 'listViewCourses','listMovies','listQuotes']));
     }
+
+    public function confirmRegister() {
+        return view('auth.confirm-register');
+    }
 }
