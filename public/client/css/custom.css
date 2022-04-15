@@ -1,0 +1,67 @@
+/*
+File Name: 		custom.css
+Description:  You can add your custom CSS here and it will overwrite template styles
+*/
+
+/*# sourceMappingURL=maps/custom.css.map */
+
+body {
+    font-family: "Montserrat", sans-serif;
+}
+
+.posts__title.main__page {
+    text-transform: unset !important;
+    font-size: 18px;
+    line-height: 1.3;
+}
+
+.icons {
+    padding-right: 3px !important;
+}
+
+.download-btn {
+    padding-bottom: 10px !important;
+}
+
+.posts--carousel .posts__link-wrapper::before {
+    content: none !important;
+    background-color: transparent !important;
+}
+
+.posts--carousel .posts__thumb img {
+    opacity: 1 !important;
+}
+
+.label.actor {
+    font-size: 14px !important;
+}
+
+.label {
+    font-weight: bold;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25em;
+    padding: 0.5em 1.1em;
+    font-size: 10px;
+    font-family: "Montserrat", sans-serif;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.post--single .post__title {
+    text-transform: none;
+}
+@media (min-width: 992px) {
+    .post--single .post__title {
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 1199px) {
+    .posts--slider-featured .posts__title {
+        font-size: 27px;
+        line-height: 34px;
+    }
+}
