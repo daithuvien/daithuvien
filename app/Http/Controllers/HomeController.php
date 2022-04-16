@@ -17,6 +17,24 @@ class HomeController extends Controller
         $footerText = "Đại Thư Viện";
         $footerYear = '2021';
 
+        ######### SEO ##############################################################
+        SEOMeta::setTitle('Đại Thư Viện - Thư Viện Tổng Hợp');
+        SEOMeta::setDescription('Chia sẻ download các Khóa học từ nhiều nguồn, miễn phí cập nhật liên tục từ Udemy, Pluralsight. Udemy Free download.');
+        SEOMeta::setCanonical('https://daithuvien.com/');
+
+        OpenGraph::setDescription('Chia sẻ download các Khóa học từ nhiều nguồn, miễn phí cập nhật liên tục từ Udemy, Pluralsight. Udemy Free download');
+        OpenGraph::setTitle('Đại Thư Viện - Thư Viện Tổng Hợp');        
+        OpenGraph::setUrl('https://daithuvien.com/');
+        OpenGraph::addProperty('locale', 'en_US');
+        OpenGraph::addProperty('type', 'website');
+        OpenGraph::addProperty('site_name', 'Đại Thư Viện - Thư Viện Tổng Hợp');
+        OpenGraph::addProperty('image', 'https://daithuvien.com/client/imgs/logo.png');
+
+        JsonLd::setTitle('Đại Thư Viện - Thư Viện Tổng Hợp');
+        JsonLd::setDescription('Chia sẻ download các Khóa học từ nhiều nguồn, miễn phí cập nhật liên tục từ Udemy, Pluralsight. Udemy Free download');
+        JsonLd::addImage('https://daithuvien.com/client/imgs/logo.png');
+        ################### END SEO #################################################
+
         $newsArticles = []; //(new News)->listNewsWithPagination(4);
         $listHotCourses = (new Course)->listHotCourses(4);
         $listViewCourses = (new Course)->listViewCourses(4);
