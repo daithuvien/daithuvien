@@ -39,5 +39,13 @@ class CategorySeeder extends Seeder
             'updated_by' => 'System',
             'delete_flag' => false,
         ]);
+        Category::create([
+            'name' => 'DevOps',
+            'slug' => 'devops',
+            'parent_id' => 1,
+            'created_by' => 'System',
+            'updated_by' => 'System',
+            'delete_flag' => false,
+        ]);
     }
 }

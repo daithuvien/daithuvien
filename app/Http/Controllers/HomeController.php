@@ -7,6 +7,7 @@ use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\JsonLd;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use App\Models\Course;
 
 class HomeController extends Controller
@@ -26,5 +27,11 @@ class HomeController extends Controller
 
     public function confirmRegister() {
         return view('auth.confirm-register');
+    }
+
+    function changeLocale($locate) {
+        $lang = $locate;
+        Session::put('language', $lang);
+        return redirect()->back();
     }
 }

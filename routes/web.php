@@ -27,6 +27,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 |
 */
 
+
 Route::get('/xac-nhan', [HomeController::class, 'confirmRegister'])->name('register.confirm');
 Auth::routes(['verify' => true]);
 
@@ -57,11 +58,21 @@ Route::group(['prefix' => 'management', 'middleware' => ['isAdmin']], function (
 
 Route::group(['middleware' => []], function() {
     Route::get('/', [HomeController::class, 'index'])->name('homepage');
+    Route::get('/lang/{locale}', [HomeController::class, 'changeLocale'])->name('change_locale');
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+    
     Route::get('/khoa-hoc', [App\Http\Controllers\CoursesController::class, 'index'])->name('client.list_courses');
+    Route::get('/courses', [App\Http\Controllers\CoursesController::class, 'index'])->name('client.list_courses.en');
+    
     Route::get('/khoa-hoc/{name}', [App\Http\Controllers\CoursesController::class, 'show'])->name('client.courses');
+    Route::get('/courses/{name}', [App\Http\Controllers\CoursesController::class, 'show'])->name('client.courses.en');
+    
     Route::get('/danh-muc/{name}', [App\Http\Controllers\CategoriesController::class, 'index'])->name('client.categories');
+    Route::get('/category/{name}', [App\Http\Controllers\CategoriesController::class, 'index'])->name('client.categories.en');
+
     Route::get('/khoa-hoc/danh-muc/{name}', [App\Http\Controllers\CoursesController::class, 'CourseInCategory'])->name('client.courses.category');
+    Route::get('/courses/category/{name}', [App\Http\Controllers\CoursesController::class, 'CourseInCategory'])->name('client.courses.category.en');
+
     Route::get('/download/{id}', [DownloadController::class, 'download'])->name('client.download');
 });
 
