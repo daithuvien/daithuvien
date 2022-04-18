@@ -52,4 +52,16 @@ class HomeController extends Controller
         Session::put('language', $lang);
         return redirect()->back();
     }
+
+    public function privacy() {
+        return view('client.privacy');
+    }
+
+    public function terms() {
+        return view('client.terms');
+    }
+
+    public function howToDelete() {
+        return view('client.howtodelete');
+    }
 }

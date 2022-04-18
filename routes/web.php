@@ -31,6 +31,10 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 Route::get('/xac-nhan', [HomeController::class, 'confirmRegister'])->name('register.confirm');
 Auth::routes(['verify' => true]);
 
+Route::get('/privacy',[HomeController::class, 'privacy'])->name('privacy');
+Route::get('/terms',[HomeController::class, 'terms'])->name('terms');
+Route::get('/how-to-delete', [HomeController::class, 'howToDelete']);
+
 Route::get('/email/verify', function () {
     return view('auth.verify-email');
 })->middleware('auth')->name('verification.notice');

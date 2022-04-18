@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Course extends Model
 {
@@ -20,6 +21,10 @@ class Course extends Model
         'course_duration',
         'course_release',
         'original_url',
+        'date_to_deliver',
+        'hours_to_deliver',
+        'minute_to_deliver',
+        'time_to_deliver',
         'created_by',
         'updated_by',
         'delete_flag'
@@ -40,28 +45,29 @@ class Course extends Model
 
     public function findBySlug($slug)
     {
-        return Course::where([['delete_flag', false], ['slug', $slug]])->first();
+        $course = Course::whereDate('time_to_deliver', '<=', Carbon::now('Asia/Singapore'))->where([['delete_flag', false], ['slug', $slug]])->first();
+        return $course;
     }
 
     public function getCoursesWithPaginate($paginate)
     {
-        return Course::where('delete_flag', false)->orderBy('created_at', 'DESC')->paginate($paginate);
+        return Course::whereDate('time_to_deliver', '<=', Carbon::now('Asia/Singapore'))->where('delete_flag', false)->orderBy('time_to_deliver', 'DESC')->paginate($paginate);
     }
 
     public function listHotCourses($number)
     {
-        return Course::where('delete_flag', false)->orderBy('updated_at', 'DESC')->take($number)->get();
+        return Course::whereDate('time_to_deliver', '<=', Carbon::now('Asia/Singapore'))->where('delete_flag', false)->orderBy('time_to_deliver', 'DESC')->take($number)->get();
     }
 
     public function listViewCourses($number)
     {
-        return Course::where('delete_flag', false)->orderBy('num_of_views', 'DESC')->take($number)->get();
+        return Course::whereDate('time_to_deliver', '<=', Carbon::now('Asia/Singapore'))->where('delete_flag', false)->orderBy('num_of_views', 'DESC')->take($number)->get();
     }
 
     public function getCoursesInCateWithPaginate($cateId, $paginate)
     {
         $courseIds = (new CourseCategory)->getCoursesIdByCategory($cateId);
-        return Course::where('delete_flag', false)->whereIn('id', $courseIds)->orderBy('created_at', 'DESC')->paginate($paginate);
+        return Course::whereDate('time_to_deliver', '<=', Carbon::now('Asia/Singapore'))->where('delete_flag', false)->whereIn('id', $courseIds)->orderBy('created_at', 'DESC')->paginate($paginate);
     }
 
     public function updateView()

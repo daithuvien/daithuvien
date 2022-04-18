@@ -12,6 +12,7 @@ use App\Models\Tags;
 use App\Models\CourseTags;
 use Illuminate\Support\Str;
 use Intervention\Image\ImageManagerStatic as Image;
+use Carbon\Carbon;
 
 class CoursesController extends Controller
 {
@@ -31,7 +32,7 @@ class CoursesController extends Controller
                 return view('admin.courses.courses.index',compact('courses', 'links'))->with('error', 'Không có khóa học tương tự!');
             }
         }else{
-            $courses = Course::where('delete_flag',0)->paginate(10);
+            $courses = Course::where('delete_flag',0)->orderBy('time_to_deliver', 'DESC')->paginate(10);
             return view('admin.courses.courses.index', compact('courses', 'links'));
         }
     }
@@ -56,6 +57,10 @@ class CoursesController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        
+        $time = str($data['date_to_deliver'])." ".str($data['hours_to_deliver']).":".str($data['minute_to_deliver']);
+        $time_to_deliver = Carbon::createFromFormat("d M, Y H:i", $time)->format("Y-m-d H:i");
+        $data['time_to_deliver'] = $time_to_deliver;
         
         $slug = str::slug($request->name, "-");
         if($slug){

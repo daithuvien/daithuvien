@@ -61,49 +61,53 @@ class CoursesController extends Controller
         }
 
         $course = (new Course)->findBySlug($slug);
-        ######### SEO ##############################################################
-            SEOMeta::setTitle($course->name. " - Đại Thư Viện");
-            SEOMeta::setDescription(substr(strip_tags($course->content), 0, 300));
-            SEOMeta::setCanonical('https://daithuvien.com/khoa-hoc/'.$course->slug.".html");        
+        if($course != null) {        
+            ######### SEO ##############################################################
+                SEOMeta::setTitle($course->name. " - Đại Thư Viện");
+                SEOMeta::setDescription(substr(strip_tags($course->content), 0, 300));
+                SEOMeta::setCanonical('https://daithuvien.com/khoa-hoc/'.$course->slug.".html");        
 
-            OpenGraph::setDescription(substr(strip_tags($course->content), 0, 300));
-            OpenGraph::setTitle($course->name. " - Đại Thư Viện");        
-            OpenGraph::setUrl('https://daithuvien.com/khoa-hoc/'.$course->slug.".html");
-            OpenGraph::addProperty('locale', 'en_US');
-            OpenGraph::addProperty('type', 'article');
-            OpenGraph::addProperty('site_name', 'Đại Thư Viện');
-            OpenGraph::addProperty('image', asset('img/courses')."/".$course->image);
-            OpenGraph::setArticle([
-                'published_time' => $course->created_at,
-                'modified_time' => $course->updated_at,
-                'author' => 'https://www.facebook.com/daithuvien',
-                'publisher' => 'https://www.facebook.com/daithuvien',        
-            ]);
+                OpenGraph::setDescription(substr(strip_tags($course->content), 0, 300));
+                OpenGraph::setTitle($course->name. " - Đại Thư Viện");        
+                OpenGraph::setUrl('https://daithuvien.com/khoa-hoc/'.$course->slug.".html");
+                OpenGraph::addProperty('locale', 'en_US');
+                OpenGraph::addProperty('type', 'article');
+                OpenGraph::addProperty('site_name', 'Đại Thư Viện');
+                OpenGraph::addProperty('image', asset('img/courses')."/".$course->image);
+                OpenGraph::setArticle([
+                    'published_time' => $course->created_at,
+                    'modified_time' => $course->updated_at,
+                    'author' => 'https://www.facebook.com/daithuvien',
+                    'publisher' => 'https://www.facebook.com/daithuvien',        
+                ]);
 
-            JsonLd::setTitle($course->name. " - Đại Thư Viện");
-            JsonLd::setDescription(substr(strip_tags($course->content), 0, 300));
-            JsonLd::addImage(asset('img/courses')."/".$course->image);
-        ################### END SEO #################################################
+                JsonLd::setTitle($course->name. " - Đại Thư Viện");
+                JsonLd::setDescription(substr(strip_tags($course->content), 0, 300));
+                JsonLd::addImage(asset('img/courses')."/".$course->image);
+            ################### END SEO #################################################
 
-        $lsCourseProvider = (new CourseLink)->listCourseProviders($course->id);
-        $latestCourses = (new Course)->listHotCourses(6);
-        $listCategories = [];
+            $lsCourseProvider = (new CourseLink)->listCourseProviders($course->id);
+            $latestCourses = (new Course)->listHotCourses(6);
+            $listCategories = [];
 
-        $lsCategoryInCourses = (new Category)->listCategoryInCourses();
-        foreach($lsCategoryInCourses as $cat) {
-            
-            $num = (new CourseCategory)->getCoursesIdByCategory($cat->id)->count();
-            $name = $cat->name;
-            $slug = $cat->slug;
-            $catInCourse = new \stdClass;
-            $catInCourse->name = $name;
-            $catInCourse->slug = $slug;
-            $catInCourse->num = $num;                
-            array_push($listCategories, $catInCourse);
+            $lsCategoryInCourses = (new Category)->listCategoryInCourses();
+            foreach($lsCategoryInCourses as $cat) {
+                
+                $num = (new CourseCategory)->getCoursesIdByCategory($cat->id)->count();
+                $name = $cat->name;
+                $slug = $cat->slug;
+                $catInCourse = new \stdClass;
+                $catInCourse->name = $name;
+                $catInCourse->slug = $slug;
+                $catInCourse->num = $num;                
+                array_push($listCategories, $catInCourse);
+            }
+            $course->updateView();
+            $lsTags = $course->tags;
+            return view('client.courses.show', compact('course', 'lsCourseProvider', 'latestCourses', 'listCategories', 'lsCategoryInCourses', 'lsTags'));
+        } else {
+            return redirect()->route('client.list_courses');
         }
-        $course->updateView();
-        $lsTags = $course->tags;
-        return view('client.courses.show', compact('course', 'lsCourseProvider', 'latestCourses', 'listCategories', 'lsCategoryInCourses', 'lsTags'));
     }
 
     public function CourseInCategory($slug)
