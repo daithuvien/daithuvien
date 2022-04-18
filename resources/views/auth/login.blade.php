@@ -62,10 +62,10 @@
 									</div>
 									<div class="row">
 										<div class="col-md-6">
-											<a href="#" class="btn btn-facebook btn-icon btn-block"><i class="fab fa-facebook"></i> Đăng Nhập bằng Facebook</a>
+											<a href="{{ route('social.redirect',['facebook']) }}" class="btn btn-facebook btn-icon btn-block"><i class="fab fa-facebook"></i> Đăng Nhập bằng Facebook</a>
 										</div>
 										<div class="col-md-6">
-											<a href="#" class="btn btn-social-counter--gplus btn-icon btn-block" style="color: white;"><i class="fab fa-google"></i> Đăng Nhập bằng Google</a>
+											<a href="{{ route('social.redirect',['google']) }}" class="btn btn-social-counter--gplus btn-icon btn-block" style="color: white;"><i class="fab fa-google"></i> Đăng Nhập bằng Google</a>
 										</div>
 									</div>
 								</form>

@@ -85,7 +85,7 @@ class LoginController extends Controller
     {
         try {
             $user = null;
-            $socialInfo = Socialite::driver($provider)->user();            
+            $socialInfo = Socialite::driver($provider)->user();
             if ($provider == "facebook") {
                 $user = User::where('delete_flag', 0)->where('facebook_id', $socialInfo->getId())->first();
                 //if user not exist
@@ -105,7 +105,7 @@ class LoginController extends Controller
             }
             if ($provider == "google") {
                 $user = User::where('delete_flag', 0)->where('google_id', $socialInfo->getId())->first();
-                if (!$user) {                
+                if (!$user) {
                     $user = User::create([
                         'name' => $socialInfo->name,
                         'email' => $socialInfo->email,

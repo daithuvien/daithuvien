@@ -31,6 +31,9 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 Route::get('/xac-nhan', [HomeController::class, 'confirmRegister'])->name('register.confirm');
 Auth::routes(['verify' => true]);
 
+Route::get('/login/redirect/{provider}', [LoginController::class, 'redirect'])->name('social.redirect');
+Route::get('/login/callback/{provider}', [LoginController::class, 'callback']);
+
 Route::get('/privacy',[HomeController::class, 'privacy'])->name('privacy');
 Route::get('/terms',[HomeController::class, 'terms'])->name('terms');
 Route::get('/how-to-delete', [HomeController::class, 'howToDelete']);

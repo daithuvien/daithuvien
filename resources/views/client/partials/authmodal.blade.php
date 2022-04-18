@@ -55,11 +55,11 @@
                 <h6>hoặc Đăng nhập với:</h6>
                 <ul class="social-links social-links--btn text-center">
                   <li class="social-links__item">
-                    <a href="#" class="social-links__link social-links__link--lg social-links__link--fb"><i
+                    <a href="{{ route('social.redirect',['facebook']) }}" class="social-links__link social-links__link--lg social-links__link--fb"><i
                         class="fab fa-facebook"></i></a>
                   </li>
                   <li class="social-links__item">
-                    <a href="#" class="social-links__link social-links__link--lg social-links__link--gplus"><i
+                    <a href="{{ route('social.redirect',['google']) }}" class="social-links__link social-links__link--lg social-links__link--gplus"><i
                         class="fab fa-google-plus-g"></i></a>
                   </li>
                 </ul>
