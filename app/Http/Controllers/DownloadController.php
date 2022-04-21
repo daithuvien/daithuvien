@@ -13,7 +13,7 @@ class DownloadController extends Controller
         
         //get download real url
         $data = Data::where('id', $id)->first();
-        return redirect($data->id);
+        return redirect($data->url);
         
     }    
 }
