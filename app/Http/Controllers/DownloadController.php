@@ -13,7 +13,7 @@ class DownloadController extends Controller
         
         //get download real url
         $data = Data::where('id', $id)->first();
-        return redirect("https://www.fshare.vn/file/W86UIR2NW9BK");
+        return redirect($data->id);
         
     }    
 }
