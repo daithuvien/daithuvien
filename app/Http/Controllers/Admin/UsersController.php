@@ -46,6 +46,7 @@ class UsersController extends Controller
         $data['created_by'] = "Administrator";
         $data['updated_by'] = "Administrator";
         $data['password'] = Hash::make($data['password']);
+        $data['ip_address'] = $request->ip();
         $data['delete_flag'] = false;
         if(User::create($data)){
             return redirect()->route('users.index')->with('success', 'Tạo thành viên thành công !');

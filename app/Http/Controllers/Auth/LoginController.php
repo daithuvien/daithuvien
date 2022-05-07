@@ -81,13 +81,13 @@ class LoginController extends Controller
         return Socialite::driver($provider)->redirect();
     }
 
-    public function callback($provider)
+    public function callback($provider, Request $request)
     {
         try {
             $user = null;
             $socialInfo = Socialite::driver($provider)->user();
             if ($provider == "facebook") {
-                $user = User::where('delete_flag', 0)->where('facebook_id', $socialInfo->getId())->first();
+                $user = User::where('delete_flag', 0)->where('facebook_id', $socialInfo->getId())->orWhere('ip_address', $request->ip())->first();
                 //if user not exist
                 if (!$user) {                
                     $user = User::create([
@@ -104,7 +104,7 @@ class LoginController extends Controller
                 }     
             }
             if ($provider == "google") {
-                $user = User::where('delete_flag', 0)->where('google_id', $socialInfo->getId())->first();
+                $user = User::where('delete_flag', 0)->where('google_id', $socialInfo->getId())->orWhere('ip_address', $request->ip())->first();
                 if (!$user) {
                     $user = User::create([
                         'name' => $socialInfo->name,

@@ -81,6 +81,7 @@ Route::group(['middleware' => []], function() {
     Route::get('/courses/category/{name}', [App\Http\Controllers\CoursesController::class, 'CourseInCategory'])->name('client.courses.category.en');
 
     Route::get('/download/{id}', [DownloadController::class, 'download'])->name('client.download');
+    Route::get('/download/limitation', [DownloadController::class, 'limitation'])->name('client.download');
 });
 
 

@@ -74,15 +74,17 @@ class RegisterController extends Controller
             'created_by' => 'register',
             'updated_by' => 'register',
             'delete_flag' => false,
+            'ip_address' => $data['ip_address'],
         ]);
     }
 
     public function register(Request $request)
     {
         $data = $request->all();
-        $check_user = User::where('email', $request->email)->first();
+        $data["ip_address"] = $request->ip();
+        $check_user = User::where('email', $request->email)->orWhere('ip_address', $request->ip())->first();
         if($check_user){
-            return redirect()->route('login')->with('message', 'Email đã tồn tại, xin vui lòng thử lại!');
+            return redirect()->route('login')->with('message', 'Tài Khoản đã tồn tại, xin vui lòng thử lại! Hoặc liên hệ Administrator');
         }else{
             $this->validator($data)->validate();
             $user = $this->create($data);

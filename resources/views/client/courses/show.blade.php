@@ -125,7 +125,7 @@
                             @foreach($providerLinks as $link)
                               <div class="col-md-6 download-btn">
                                 <a 
-                                  href="{{ url('download/')}}/{{ $link->provider_url }}" 
+                                  href="{{ url('download/')}}/{{ $course->id }}.{{ $link->provider_url }}" 
                                   target="_blank" 
                                   class="btn btn-primary btn-lg"
                                 >
@@ -136,7 +136,7 @@
                           @else
                             <div class="col-md-6 download-btn">
                               <a 
-                                href="{{ url('download/')}}/{{ $providerLinks->first()->provider_url }}" 
+                                href="{{ url('download/')}}/{{ $course->id }}.{{ $providerLinks->first()->provider_url }}" 
                                 target="_blank" 
                                 class="btn btn-primary btn-lg"
                               >
