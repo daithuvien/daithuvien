@@ -64,4 +64,8 @@ class HomeController extends Controller
     public function howToDelete() {
         return view('client.howtodelete');
     }
+    
+    public function decrypt() {
+        return view('client.decrypt')
+    }
 }
