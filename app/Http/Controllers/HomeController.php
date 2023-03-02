@@ -66,6 +66,6 @@ class HomeController extends Controller
     }
     
     public function decrypt() {
-        return view('client.decrypt')
+        return view('client.decrypt');
     }
 }
