@@ -68,4 +68,8 @@ class HomeController extends Controller
     public function decrypt() {
         return view('client.decrypt');
     }
+    
+    public function encrypt() {
+        return view('client.encrypt');
+    }
 }
