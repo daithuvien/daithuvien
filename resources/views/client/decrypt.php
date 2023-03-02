@@ -10,7 +10,7 @@ function encrypt_dtv($textToEncrypt, $base64Key) {
     return base64_encode($iv.$ciphertext.$tag);
 }
 
-function decrypt($base64IvCiphertext, $base64Key) {
+function decrypt_dtv($base64IvCiphertext, $base64Key) {
     $ivCiphertext = base64_decode($base64IvCiphertext);
     $key = base64_decode($base64Key);
     $method = 'aes-256-gcm';
@@ -35,7 +35,7 @@ function encode($text) {
 
 function decode($encoded) {
     global $KEY;
-    return decrypt($encoded, $KEY);
+    return decrypt_dtv($encoded, $KEY);
 }
 
 /* END OF DECRYPT FUNCTIONS */
