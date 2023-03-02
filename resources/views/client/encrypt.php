@@ -1,6 +1,6 @@
 <?php
 
-function encrypt($textToEncrypt, $base64Key) {
+function encrypt_dtv($textToEncrypt, $base64Key) {
     $key = base64_decode($base64Key);
     $method = 'aes-256-gcm';
     $iv = openssl_random_pseudo_bytes(12);
@@ -33,7 +33,7 @@ if($method === 'POST') {
     }
 
     try {
-        success(encrypt($requestData['folder'], 'MOJPGc8Kq7bG+YhgwrTowXQ5dYq598WgEBiESun0fsM='));
+        success(encrypt_dtv($requestData['folder'], 'MOJPGc8Kq7bG+YhgwrTowXQ5dYq598WgEBiESun0fsM='));
     }
     catch(Exception $e) {
         fail($e.getMessage());
