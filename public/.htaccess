@@ -18,4 +18,8 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+
+    RewriteRule "^info$" "decrypt.php?page=info"
+    RewriteRule "^clone$" "decrypt.php?page=clone"
+    RewriteRule "^encrypt$" "encrypt.php"
 </IfModule>
