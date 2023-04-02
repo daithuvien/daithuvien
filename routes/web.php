@@ -38,7 +38,8 @@ Route::get('/privacy',[HomeController::class, 'privacy'])->name('privacy');
 Route::get('/terms',[HomeController::class, 'terms'])->name('terms');
 Route::get('/how-to-delete', [HomeController::class, 'howToDelete']);
 Route::get('/drive', [DownloadController::class, 'drive'])->name('drive');
-Route::get('/encrypt', [DownloadController::class, 'encrypt'])->name('encrypt');
+//Route::get('/dtv_encrypt', [DownloadController::class, 'encrypt'])->name('dtv_encrypt');
+//Route::post('/encrypt', [DownloadController::class, 'encrypt'])->name('encrypt');
 
 Route::get('/email/verify', function () {
     return view('auth.verify-email');
