@@ -37,8 +37,8 @@ Route::get('/login/callback/{provider}', [LoginController::class, 'callback']);
 Route::get('/privacy',[HomeController::class, 'privacy'])->name('privacy');
 Route::get('/terms',[HomeController::class, 'terms'])->name('terms');
 Route::get('/how-to-delete', [HomeController::class, 'howToDelete']);
-Route::get('/decrypt', [HomeController::class, 'decrypt']);
-Route::get('/encrypt', [HomeController::class, 'encrypt']);
+Route::get('/drive', [DownloadController::class, 'drive'])->name('drive');
+Route::get('/encrypt', [DownloadController::class, 'encrypt'])->name('encrypt');
 
 Route::get('/email/verify', function () {
     return view('auth.verify-email');

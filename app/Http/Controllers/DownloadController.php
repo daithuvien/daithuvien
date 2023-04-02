@@ -62,5 +62,13 @@ class DownloadController extends Controller
         } else {
             return redirect('/login');
         }
-    }    
+    }
+
+    public function drive() {
+        return view('client.download.drive');
+    }
+
+    public function encrypt() {
+        return view('client.download.encrypt');
+    }
 }
