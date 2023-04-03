@@ -57,7 +57,7 @@ class DownloadController extends Controller
             
             //get download real url
             
-            return redirect('https://download.daithuvien.com/#'.$data->url);
+            return redirect($data->url);
             
         } else {
             return redirect('/login');
