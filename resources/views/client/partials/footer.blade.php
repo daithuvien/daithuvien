@@ -8,8 +8,8 @@
             <div class="footer-col-inner">
               <!-- Footer Logo -->
               <div class="footer-logo">
-                <a href="/"><img src="{{ asset('client/images/logo.jpg')}}" srcset="{{ asset('client/images/logo@2x.png')}}"
-                    alt="Alchemists" class="footer-logo__img"></a>
+                <a href="/"><img src="{{ asset('client/images/logo.jpg')}}"
+                    alt="Đại Thư Viện" class="footer-logo__img"></a>
               </div>
               <!-- Footer Logo / End -->
             </div>
