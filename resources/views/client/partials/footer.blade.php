@@ -8,7 +8,7 @@
             <div class="footer-col-inner">
               <!-- Footer Logo -->
               <div class="footer-logo">
-                <a href="/"><img src="{{ asset('client/images/logo.jpg')}}"
+                <a href="/"><img src="{{ asset('client/images/logo.png')}}"
                     alt="Đại Thư Viện" class="footer-logo__img"></a>
               </div>
               <!-- Footer Logo / End -->
